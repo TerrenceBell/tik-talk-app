@@ -1,10 +1,11 @@
 import React from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Chip from '@material-ui/core/Chip';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -12,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(3, 2),
     },
     flex: { 
-        display: 'flex'
+        display: 'flex',
+        alignItems: 'center'
     }, 
     topicWindow: { 
         width: '20%',
@@ -55,15 +57,31 @@ export default function Messageboard() {
       <div className={classes.flex}>
           <div className={classes.topicWindow}> 
           <List> 
-          <ListItem button>
+            { 
+                ['test'].map(topic => (
+                    <ListItem key={topic} button>
+                        <ListItemText primary={topic} />
+                    </ListItem>
+
+                ))
+            }
+
           
-          <ListItemText primary="Drafts" />
-        </ListItem>
             
           </List>
           
           </div>
           <div className={classes.chatWindow}> 
+            {
+                [{from: 'user' , msg: 'hello'}].map((chat, i) => (
+                   <div className={classes.flex} key={i}>  
+                        <Chip label={chat.from} className={classes.chip} />
+                        <div>{chat.msg}</div>
+                   </div> 
+
+                ))
+            }
+                    
           
           </div>
 
