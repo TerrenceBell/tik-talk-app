@@ -6,7 +6,7 @@ import Messageboard from './Messageboard'
 function App() {
   return (
     <div className="App">
-    
+     <Messageboard />
     </div>
   );
 }
