@@ -5,6 +5,10 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,13 +23,14 @@ const useStyles = makeStyles((theme) => ({
     topicWindow: { 
         width: '20%',
         height: '300px',
-        borderRight: '1px solid grey'
+        borderRight: '1px solid grey',
 
     },
 
     chatWindow: { 
         width: '70%',
-        height: '300px'
+        height: '300px',
+        padding: '10px'
     },
 
     chatBox: { 
@@ -88,7 +93,22 @@ export default function Messageboard() {
       </div>
 
       <div className={classes.flex}> 
-          
+      <TextField
+          id="standard-full-width"
+          label="Label"
+          style={{ margin: 8 }}
+          placeholder="Placeholder"
+          helperText=" "
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+       
+        <Button variant="contained" color="primary">
+            Send
+        </Button> 
       </div>
       <Paper variant="outlined" square />
     </div>
