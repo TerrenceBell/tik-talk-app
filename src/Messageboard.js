@@ -10,7 +10,6 @@ import TextField from '@material-ui/core/TextField';
 
 
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
       margin: '50px',
@@ -46,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function Messageboard() { 
+    
 
     const classes = useStyles()
     return( 
@@ -61,6 +61,7 @@ export default function Messageboard() {
       </h3>
       <div className={classes.flex}>
           <div className={classes.topicWindow}> 
+
           <List> 
             { 
                 ['test'].map(topic => (
@@ -75,6 +76,7 @@ export default function Messageboard() {
           </div>
           <div className={classes.chatWindow}> 
             {
+                
                 [{from: 'user' , msg: 'hello'}].map((chat, i) => (
                    <div className={classes.flex} key={i}>  
                         <Chip label={chat.from} className={classes.chip} />
@@ -94,7 +96,7 @@ export default function Messageboard() {
           id="standard-full-width"
           style={{ margin: 8 }}
           placeholder="Type message here"
-          value={textValue}
+          //value={textValue}
           helperText=" "
           fullWidth
           margin="normal"
