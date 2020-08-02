@@ -70,9 +70,6 @@ export default function Messageboard() {
 
                 ))
             }
-
-          
-            
           </List>
           
           </div>
@@ -95,9 +92,9 @@ export default function Messageboard() {
       <div className={classes.flex}> 
       <TextField
           id="standard-full-width"
-          label="Label"
           style={{ margin: 8 }}
-          placeholder="Placeholder"
+          placeholder="Type message here"
+          value={textValue}
           helperText=" "
           fullWidth
           margin="normal"
