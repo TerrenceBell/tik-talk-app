@@ -7,7 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-//import { fetchMessages } from '../actions/index'
+import { connect } from 'react-redux';
+import { fetchMessages } from './actions/index'
 
 
 
@@ -46,9 +47,9 @@ const useStyles = makeStyles((theme) => ({
 
   }));
 
-export default function Messageboard() { 
+ function Messageboard() { 
     
-const msg = () => {
+    const msg = () => {
         this.props.fetchMessages()
         
     }
@@ -122,3 +123,5 @@ const msg = () => {
         </div>
     )
 }
+
+export default connect(null, { fetchMessages } )(Messageboard);

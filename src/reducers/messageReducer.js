@@ -1,6 +1,6 @@
-export default function MessageReducer(state=[], action){ 
-    
-    const
+import { fetchMessages, fetchTopics } from '../actions/index'; 
+
+export default function messageReducer(state=[], action){ 
     switch(action.type) { 
         
         case 'GET_MESSAGES' : 

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Messageboard from './Messageboard'
-import { Provider } from 'react-redux';
-import { createStore, compose, applyMiddleware } from 'redux';
-//import store from './store'
-const store = createStore(() => [], {}, applyMiddleware())
+import { Provider } from 'react-redux'; 
+import store from './store'
+
 
 
  class App extends Component {
