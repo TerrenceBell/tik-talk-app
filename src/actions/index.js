@@ -1,7 +1,8 @@
 //trying to get the messages to be able to render in a component
 export const fetchMessages = () => { 
+    console.log('in action')
     return(dispatch) => { 
-        return fetch('http://localhost:3001/messages')
+        return fetch('http://localhost:3001/messages')   
         .then(resp => resp.json)
         .then(msg => { 
             dispatch({ type: 'GET_MESSSAGES', payload: msg})

@@ -1,7 +1,10 @@
 export default function MessageReducer(state=[], action){ 
+    
     const
     switch(action.type) { 
+        
         case 'GET_MESSAGES' : 
+        console.log('in reducer')
             return [
                 //bring forward entire state
                 ...state, action.payload

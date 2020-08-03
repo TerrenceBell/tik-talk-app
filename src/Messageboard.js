@@ -7,6 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+//import { fetchMessages } from '../actions/index'
+
 
 
 
@@ -46,6 +48,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Messageboard() { 
     
+const msg = () => {
+        this.props.fetchMessages()
+        
+    }
+    console.log(msg)
 
     const classes = useStyles()
     return( 
@@ -64,6 +71,7 @@ export default function Messageboard() {
 
           <List> 
             { 
+            
                 ['test'].map(topic => (
                     <ListItem key={topic} button>
                         <ListItemText primary={topic} />
