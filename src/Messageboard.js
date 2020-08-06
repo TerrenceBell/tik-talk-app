@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
@@ -8,7 +8,10 @@ import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
-import { fetchMessages } from './actions/index'
+import { getMessages, setMessages } from './actions/index';
+import Messages from './reducers/messageReducer'
+
+
 
 
 
@@ -46,14 +49,20 @@ const useStyles = makeStyles((theme) => ({
     }
 
   }));
+  
 
  function Messageboard() { 
+    // const messages = this.props.action.messages
+    //  console.log('in the function', messages)
+     
     
-    const msg = () => {
-        this.props.fetchMessages()
+    // componentDidMount(){ 
+    //     this.props.fetchMessages()
+    // }
         
-    }
-    console.log(msg)
+        
+    
+    
 
     const classes = useStyles()
     return( 
@@ -124,4 +133,11 @@ const useStyles = makeStyles((theme) => ({
     )
 }
 
-export default connect(null, { fetchMessages } )(Messageboard);
+const mapStateToProps = (state) => { 
+    return({ 
+      messages: state.messages 
+    })
+ }
+
+export default connect(mapStateToProps,{getMessages})(Messageboard)
+//export default connect(mapStateToProps, {getMessages})(App)

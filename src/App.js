@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
 import Messageboard from './Messageboard'
-import { Provider } from 'react-redux'; 
-import store from './store'
+import store from './store';
+import { getMessages } from './actions/index';
+import { getTopics} from './actions/index';
+import { connect } from 'react-redux';
 
 
 
  class App extends Component {
    componentDidMount(){ 
-     //async actiopn creator
-     fetch('http://localhost:3001/messages')
-       .then(resp => resp.json())
-        .then(console.log)
+    this.props.getMessages()
    }
    render() {
     return (
-      <Provider store={store}>
+    
       <div className="App">
        <Messageboard />
       </div>
-      </Provider>
     );
   }
 }
-   
+   const mapStateToProps = (state) => { 
+      return({ 
+        messages: state.messages 
+      })
+   }
  
 
-export default App;
+export default connect(mapStateToProps, {getMessages})(App)
+
+//in msg brd map over messages

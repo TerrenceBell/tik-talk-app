@@ -1,19 +1,78 @@
 //trying to get the messages to be able to render in a component
-export const fetchMessages = () => dispatch => { 
-    console.log('in action')
-        return fetch('http://localhost:3001/messages')   
-        .then(resp => resp.json)
-        .then(msg => { 
-            dispatch({ type: 'GET_MESSSAGES', payload: msg})
-        })
-    
+//used as template for other request
+export const setMessages = (messages) => { 
+    //console.log('confusing', messages)
+    return{ 
+        type: 'SET_MESSAGES',
+        messages
+        
+    }
 }
 
-export const fetchTopics = () => dispatch => { 
-        return fetch('http://localhost:3001/topics')
-        .then(resp => resp.json)
-        .then(msg => { 
-            dispatch({ type: 'GET_TOPICS', payload: msg})
-        })
+export const setTopics = (topics) => { 
+    return{ 
+        type: 'SET_TOPICS',
+        topics
+    }
+}    
     
+
+
+
+export const getMessages = () => { 
+    return dispatch => { 
+        return fetch('http://localhost:3001/messages', { 
+            method: 'GET',
+            headers: { 
+                'Content-Type': 'application/json'
+            }
+
+
+        })
+        .then(resp => resp.json())
+        .then(resp => { 
+            if (resp.error) { 
+                alert(resp.error)
+            } else { 
+                dispatch(setMessages(resp))
+                    //console.log(resp)
+            }
+        })
+        .catch(console.log)
+    }
 }
+
+export const getTopics = () => { 
+    return dispatch => { 
+        return fetch('http://localhost:3001/topics', { 
+            method: 'GET',
+            headers: { 
+                'Content-Type': 'application/json'
+            }
+
+
+        })
+        .then(resp => resp.json())
+        .then(resp => { 
+            if (resp.error) { 
+                alert(resp.error)
+            } else { 
+                dispatch(setTopics(resp))
+                console.log(resp)
+            }
+        })
+        .catch(console.log)
+    }
+}
+   
+
+// export const fetchTopics = () => dispatch => { 
+//         return fetch('http://localhost:3001/topics')
+//         .then(resp => resp.json)
+//         .then(resp => { 
+//             dispatch(setTopics(resp))
+//             console.log(resp)
+
+//         })
+    
+// }
