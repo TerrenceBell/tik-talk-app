@@ -9,129 +9,127 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
 import { getMessages, setMessages } from './actions/index';
-import Messages from './reducers/messageReducer'
+import Messages from './reducers/messageReducer';
+import { GlobalStyle } from './GlobalStyle';
 
 
 
 
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      margin: '50px',
-      padding: theme.spacing(3, 2),
-    },
-    flex: { 
-        display: 'flex',
-        alignItems: 'center'
-    }, 
-    topicWindow: { 
-        width: '20%',
-        height: '300px',
-        borderRight: '1px solid grey',
 
-    },
 
-    chatWindow: { 
-        width: '70%',
-        height: '300px',
-        padding: '10px'
-    },
 
-    chatBox: { 
-        width: '85%'
-        
-    }, 
-
-    button: { 
-        width: '15%'
-
-    }
-
-  }));
   
 
- function Messageboard() { 
+ class Messageboard extends Component { 
     // const messages = this.props.action.messages
-    //  console.log('in the function', messages)
+      //console.log('in the function',this.props.messages)
+     
      
     
-    // componentDidMount(){ 
+    // //componentDidMount(){ 
     //     this.props.fetchMessages()
     // }
-        
-        
+
     
+        
+        
     
 
-    const classes = useStyles()
+     
+    render() {
+        
     return( 
-        <div> 
-            <div className={classes.root}>
-      <Paper variant="outlined" />
-      <h1>
-          Tik-Talk
-      </h1>
-
-      <h3> 
-          Topic goes here
-      </h3>
-      <div className={classes.flex}>
-          <div className={classes.topicWindow}> 
-
-          <List> 
-            { 
+        <div className='main_container'> 
             
-                ['test'].map(topic => (
-                    <ListItem key={topic} button>
-                        <ListItemText primary={topic} />
-                    </ListItem>
+            <Paper variant="outlined" />
+            <h1>
+                Tik-Talk
+            </h1>
 
-                ))
-            }
-          </List>
-          
-          </div>
-          <div className={classes.chatWindow}> 
-            {
-                
-                [{from: 'user' , msg: 'hello'}].map((chat, i) => (
-                   <div className={classes.flex} key={i}>  
-                        <Chip label={chat.from} className={classes.chip} />
-                        <div>{chat.msg}</div>
-                   </div> 
+            <table className="channel_table">
+                <thead>
+                    <tr>
+                        <th className='channel_container_header'>
+                            Channels
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className='channel_container'>
+                            <List> 
+                                { 
+                                
+                                    [
+                                        'test 1',
+                                        'test 2',
+                                        'test 3',
+                                        'test 4',
+                                        'test 5',
+                                        'test 6',
+                                        'test 7',
+                                        'test 8',
+                                        'Super long channel name goes here for testing',
+                                        'test 10',
+                                        'test 11'
+                                ].map(topic => (
+                                        <ListItem key={topic} button>
+                                            <ListItemText primary={topic} className="channel_item_entry"/>
+                                        </ListItem>
 
-                ))
-            }
+                                    ))
+                                }
+                            </List>
                     
-          
-          </div>
+                        </td>
+                
+                        <td>
+                        {[{from: 'user' , msg: 'hello'}].map((chat, i) => (
+                            <div className='flex' key={i}>  
+                                    <Chip label={chat.from} className='chip' />
+                                    <div>{chat.msg}</div>
+                            </div> 
 
-      </div>
+                            ))}
 
-      <div className={classes.flex}> 
-      <TextField
-          id="standard-full-width"
-          style={{ margin: 8 }}
-          placeholder="Type message here"
-          //value={textValue}
-          helperText=" "
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-       
-        <Button variant="contained" color="primary">
-            Send
-        </Button> 
-      </div>
-      <Paper variant="outlined" square />
-    </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <div className='flex'>
+                                <TextField
+                                    id="standard-full-width"
+                                    style={{ margin: 8 }}
+                                    placeholder="Type message here"
+                                    //value={textValue}
+                                    helperText=" "
+                                    fullWidth
+                                    margin="normal"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    />
+                                
+                                <Button variant="contained" color="primary">
+                                    Send 
+                                </Button> 
+                        
+                                <Paper variant="outlined" square />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     )
 }
+ }
 
 const mapStateToProps = (state) => { 
     return({ 

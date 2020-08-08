@@ -1,4 +1,79 @@
-.App {
-  text-align: center;
+.root {
+    margin: 50px;
+    padding: 3px 2px;
 }
 
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.topicWindow {
+    width: 20%;
+    height: 300px;
+    border-right: 1px solid grey;
+}
+
+.chatWindow {
+    width: 70%;
+    min-height: 300px;
+    max-height: 1000px;
+    resize: both;
+    padding: 10px;
+    border: 1px solid darkgray;
+}
+
+.chatBox {
+    width: 85%;
+}
+
+.button {
+    width: 15%;
+}
+
+.main_chat_container {
+    display: flex;
+}
+
+.channel_table {
+    table-layout: auto;
+    width: 100%;
+}
+
+.channel_container_header {
+    background-color: #fdfdfd;
+    width: 50px;
+    color: darkgray;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.channel_container {
+    border-top: 1px solid gainsboro;
+    border-right: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fdfdfd;
+    resize: both;
+}
+
+.channel_item_entry {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 75px;
+    /* Width is treated as minimum width because it is being used within a resize:both parent element */
+}
+
+.channel_item_entry .MuiTypography-body1 {
+    font-size: 10px;
+}
+
+.main_container {
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    margin: auto;
+    max-width: 1000px;
+    min-width: 800px;
+}

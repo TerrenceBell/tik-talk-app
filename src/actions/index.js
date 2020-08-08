@@ -35,7 +35,7 @@ export const getMessages = () => {
                 alert(resp.error)
             } else { 
                 dispatch(setMessages(resp))
-                    //console.log(resp)
+                    console.log(resp)
             }
         })
         .catch(console.log)
