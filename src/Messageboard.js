@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,37 +7,40 @@ import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
-import { getMessages, setMessages } from './actions/index';
-import Messages from './reducers/messageReducer';
-import { GlobalStyle } from './GlobalStyle';
+import { getMessages, getTopics } from './actions/index';
+//import Messages from './reducers/messageReducer';
 
-
-
-
-
-
-
-
-
-  
 
  class Messageboard extends Component { 
-    // const messages = this.props.action.messages
-      //console.log('in the function',this.props.messages)
-     
-     
     
-    // //componentDidMount(){ 
-    //     this.props.fetchMessages()
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+    
+      handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+    
+      handleSubmit(event) {
+        alert('A message was submitted: ' + this.state.value);
+        event.preventDefault();
+      }
 
-    
-        
-        
-    
-
-     
+   componentDidMount(){ 
+    this.props.getMessages()
+    this.props.getTopics()
+   }
+// topics = this.props.topics
+   
     render() {
+        const topics = this.props.topics
+        //const topicTitles = topics.map(topic => {topic.title})
+        const messages = this.props.messages
+        //const [activeTopic, changeActiveTopic] = 
         
     return( 
         <div className='main_container'> 
@@ -47,6 +49,11 @@ import { GlobalStyle } from './GlobalStyle';
             <h1>
                 Tik-Talk
             </h1>
+            <h5> 
+               topic goes here {/* {topics.map(topic => 
+                    <h5>{topic.title}</h5>
+                )} */}
+            </h5>
 
             <table className="channel_table">
                 <thead>
@@ -63,22 +70,10 @@ import { GlobalStyle } from './GlobalStyle';
                         <td className='channel_container'>
                             <List> 
                                 { 
-                                
-                                    [
-                                        'test 1',
-                                        'test 2',
-                                        'test 3',
-                                        'test 4',
-                                        'test 5',
-                                        'test 6',
-                                        'test 7',
-                                        'test 8',
-                                        'Super long channel name goes here for testing',
-                                        'test 10',
-                                        'test 11'
-                                ].map(topic => (
-                                        <ListItem key={topic} button>
-                                            <ListItemText primary={topic} className="channel_item_entry"/>
+                                 topics
+                                .map(topic => (
+                                        <ListItem key={topic.id} button>
+                                            <ListItemText primary={topic.title} className="channel_item_entry"/>                                       
                                         </ListItem>
 
                                     ))
@@ -88,10 +83,10 @@ import { GlobalStyle } from './GlobalStyle';
                         </td>
                 
                         <td>
-                        {[{from: 'user' , msg: 'hello'}].map((chat, i) => (
-                            <div className='flex' key={i}>  
-                                    <Chip label={chat.from} className='chip' />
-                                    <div>{chat.msg}</div>
+                        {messages.map((message) => (
+                            <div className='flex' key={message.id}>  
+                                    <Chip label={message.user_id} className='chip' />
+                                    <div>{message.content}</div>
                             </div> 
 
                             ))}
@@ -103,11 +98,11 @@ import { GlobalStyle } from './GlobalStyle';
                         </td>
                         <td>
                             <div className='flex'>
-                                <TextField
+                                <TextField onSubmit={this.handleSubmit}
                                     id="standard-full-width"
                                     style={{ margin: 8 }}
                                     placeholder="Type message here"
-                                    //value={textValue}
+                                    value={this.state.value} onChange={this.handleChange}
                                     helperText=" "
                                     fullWidth
                                     margin="normal"
@@ -115,7 +110,8 @@ import { GlobalStyle } from './GlobalStyle';
                                         shrink: true,
                                     }}
                                     />
-                                
+                                          {/* <h1>{this.state.value}</h1> */}
+
                                 <Button variant="contained" color="primary">
                                     Send 
                                 </Button> 
@@ -131,11 +127,24 @@ import { GlobalStyle } from './GlobalStyle';
 }
  }
 
-const mapStateToProps = (state) => { 
-    return({ 
-      messages: state.messages 
-    })
- }
-
-export default connect(mapStateToProps,{getMessages})(Messageboard)
+ const mapStateToProps = (state) => { 
+          return({ 
+            messages: state.messages, 
+            topics: state.topics 
+          })
+       }
+     
+    
+    export default connect(mapStateToProps, {getMessages, getTopics})(Messageboard)
 //export default connect(mapStateToProps, {getMessages})(App)
+ // 'test 1',
+                                        // 'test 2',
+                                        // 'test 3',
+                                        // 'test 4',
+                                        // 'test 5',
+                                        // 'test 6',
+                                        // 'test 7',
+                                        // 'test 8',
+                                        // 'Super long channel name goes here for testing',
+                                        // 'test 10',
+                                        // 'test 11' 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Messageboard from './Messageboard'
-import store from './store';
+//import store from './store';
 import { getMessages } from './actions/index';
-import { getTopics} from './actions/index';
+//import { getTopics} from './actions/index';
 import { connect } from 'react-redux';
 
 //import { TopicList } from './containers/TopicList'
@@ -44,24 +44,25 @@ import { connect } from 'react-redux';
 
 // //in msg brd map over messages
 
-class App extends Component {
-  componentDidMount(){ 
-   this.props.getMessages()
+ class App extends Component {
+   componentDidMount(){ 
+    this.props.getMessages()
+    //console.log(this.props.getMessages())
+   }
+   render() {
+    return (
+    
+      <div className="App">
+       <Messageboard />
+      </div>
+    );
   }
-  render() {
-   return (
-   
-     <div className="App">
-      <Messageboard />
-     </div>
-   );
- }
 }
-  const mapStateToProps = (state) => { 
-     return({ 
-       messages: state.messages 
-     })
-  }
-
+   const mapStateToProps = (state) => { 
+      return({ 
+        messages: state.messages 
+      })
+   }
+ 
 
 export default connect(mapStateToProps, {getMessages})(App)
