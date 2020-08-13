@@ -7,16 +7,19 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import store from './store'
+import store from './store';
 import GlobalStyle from './GlobalStyle'
-import Home from './containers/Home'
-import Messageboard from './containers/Messageboard'
-import About from './containers/About'
+import Home from './containers/Home';
+import Messageboard from './containers/Messageboard';
+import About from './containers/About';
+import Footer from './components/Footer';
+import Title from './components/Title';
 //import Messageboard from './Messageboard';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <Title />
     <BrowserRouter>
     <NavBar />
     <Switch>
@@ -26,6 +29,7 @@ ReactDOM.render(
       <App />
       </Switch>
     </BrowserRouter>
+    <Footer />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -6,7 +6,7 @@ const Footer = () => {
             <div className='container'> 
                 <div className='row'> 
                 {/* column 1 */}
-                <div className='col1'> 
+                <div className="col"> 
                     <h4>Tik-Talk</h4>
                     <ul className='list'> 
                         <li>123-456-789</li>
@@ -15,7 +15,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 {/* column2 */}
-                <div className='col2'> 
+                <div className="col"> 
                     <h4>More stuff</h4>
                     <ul className='list'> 
                         <li>Topics coming soon</li>
@@ -24,14 +24,20 @@ const Footer = () => {
                      </ul>
                 </div>
                 {/* {column 3} */}
-                <div className='col3'> 
+                <div className="col"> 
                     <h4>Add Topic</h4>
                         <ul className='list'> 
                             <li>More stuffs</li>
                             <li>More stuffs</li>
                             <li>More stuffs</li>
-                        </ul>
+                        </ul> 
                 </div>
+                <hr /> 
+                <div className='row'> 
+                            <p className='col-sm'>  
+                            &copy;{new Date().getFullYear} Tik-Talk | Terms of service | privacy
+                            </p>
+                        </div>
                 </div>
             </div>
         </div>
