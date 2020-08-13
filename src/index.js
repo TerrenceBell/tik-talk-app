@@ -9,13 +9,20 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store'
 import GlobalStyle from './GlobalStyle'
+import Home from './containers/Home'
+import Messageboard from './containers/Messageboard'
+import About from './containers/About'
 //import Messageboard from './Messageboard';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <BrowserRouter>
+    <NavBar />
     <Switch>
+    <Route exact path="/" component={ Home } />
+<Route exact path="/chat" component={Messageboard} />
+<Route exact path="/about" component={About} />
       <App />
       </Switch>
     </BrowserRouter>

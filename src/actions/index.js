@@ -17,7 +17,7 @@ export const setTopics = (topics) => {
 }
 
 export const sendMessage = (messages) => {
-    //console.log('confusing', messages)
+
     return {
         type: 'SEND_MESSAGE',
         messages
@@ -74,30 +74,36 @@ export const getTopics = () => {
     }
 }
 
-export const sendMessages = () => {
+export const createMessage = content => {
+
+    console.log(content)
     return dispatch => {
+        //debugger
         return fetch('http://localhost:3001/messages', {
-                method: 'PATCH',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify({ message: { content } })
 
 
             })
             .then(resp => resp.json())
             .then(resp => {
                 if (resp.error) {
+                    //debugger
+                    console.log(resp)
                     alert(resp.error)
                 } else {
+                    //debugger
                     dispatch(sendMessage(resp))
-                        //console.log(resp)
                 }
             })
             .catch(console.log)
     }
 }
 
-
+//on submit call comp again to render
 // export const fetchTopics = () => dispatch => { 
 //         return fetch('http://localhost:3001/topics')
 //         .then(resp => resp.json)
