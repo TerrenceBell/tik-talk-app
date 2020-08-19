@@ -2,20 +2,20 @@ import React from 'react';
 
 const Footer = () => { 
     return( 
-        <div className='app-footer'> 
-            <div className='container'> 
-                <div className='row'> 
-                {/* column 1 */}
-                <div className="col"> 
-                    <h4>Tik-Talk</h4>
-                    <ul className='list'> 
-                        <li>123-456-789</li>
-                        <li>San Antonio, TX</li>
-                        <li>123 Norf Souf</li>
+        // <div className='row'> 
+        //     <div className='container'> 
+                <div className="row"> 
+                    {/* column 1 */}
+                    <div className="column"> 
+                        <h4>Tik-Talk</h4>
+                        <ul className='list'> 
+                            <li>123-456-789</li>
+                            <li>San Antonio, TX</li>
+                            <li>123 Norf Souf</li>
                     </ul>
                 </div>
                 {/* column2 */}
-                <div className="col"> 
+                <div className="column"> 
                     <h4>More stuff</h4>
                     <ul className='list'> 
                         <li>Topics coming soon</li>
@@ -24,7 +24,7 @@ const Footer = () => {
                      </ul>
                 </div>
                 {/* {column 3} */}
-                <div className="col"> 
+                <div className="column"> 
                     <h4>Add Topic</h4>
                         <ul className='list'> 
                             <li>More stuffs</li>
@@ -39,8 +39,8 @@ const Footer = () => {
                             </p>
                         </div>
                 </div>
-            </div>
-        </div>
+        //     </div>
+        // </div>
     )
 }
 export default Footer;
